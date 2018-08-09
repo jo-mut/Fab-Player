@@ -1,0 +1,190 @@
+{
+  "project_info": {
+    "project_number": "596610417835",
+    "firebase_url": "https://andeqa.firebaseio.com",
+    "project_id": "andeqa",
+    "storage_bucket": "andeqa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596610417835:android:e7f44b81173dbbe8",
+        "android_client_info": {
+          "package_name": "com.andeqa.andeqa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596610417835-hkhiskdki7945m9n9v31r1fmhtqftcts.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.andeqa.andeqa",
+            "certificate_hash": "16a4a5349665314b098487ab3a09592e095a34bf"
+          }
+        },
+        {
+          "client_id": "596610417835-hjptpfr8jk4dfmq6feol9fm9jmh4acth.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.andeqa.andeqa",
+            "certificate_hash": "ad635edc871fa77be2c21707b0cffb342df8bd5a"
+          }
+        },
+        {
+          "client_id": "596610417835-csr0gamutmbfq5f8v0e2v329bia6irte.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.andeqa.andeqa",
+            "certificate_hash": "443527f6a49b5148ee53615e45006aa3884eed63"
+          }
+        },
+        {
+          "client_id": "596610417835-rakd9gkhd5tjbj0ul12k01fsiesdlen9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAL2YZCjbBwuvstvKNTYmN0NVzMKnktlhg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596610417835-rakd9gkhd5tjbj0ul12k01fsiesdlen9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596610417835:android:264c9bcc6012e97e",
+        "android_client_info": {
+          "package_name": "com.andeqa.chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596610417835-4dttssk1lde1v490qvvjpv10rog091bg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.andeqa.chat",
+            "certificate_hash": "443527f6a49b5148ee53615e45006aa3884eed63"
+          }
+        },
+        {
+          "client_id": "596610417835-rakd9gkhd5tjbj0ul12k01fsiesdlen9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAL2YZCjbBwuvstvKNTYmN0NVzMKnktlhg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596610417835-rakd9gkhd5tjbj0ul12k01fsiesdlen9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596610417835:android:9b62cb5e7e924918",
+        "android_client_info": {
+          "package_name": "com.andeqa.fabplayer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596610417835-rakd9gkhd5tjbj0ul12k01fsiesdlen9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAL2YZCjbBwuvstvKNTYmN0NVzMKnktlhg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596610417835:android:e3804db8b7337b09",
+        "android_client_info": {
+          "package_name": "com.andeqa.wallet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596610417835-beic3grh9ifru5r5vn120bbeikqc9t0q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.andeqa.wallet",
+            "certificate_hash": "443527f6a49b5148ee53615e45006aa3884eed63"
+          }
+        },
+        {
+          "client_id": "596610417835-rakd9gkhd5tjbj0ul12k01fsiesdlen9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAL2YZCjbBwuvstvKNTYmN0NVzMKnktlhg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596610417835-rakd9gkhd5tjbj0ul12k01fsiesdlen9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
