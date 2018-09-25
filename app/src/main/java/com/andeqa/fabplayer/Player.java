@@ -75,7 +75,6 @@ public class Player implements com.google.android.exoplayer2.Player.EventListene
             dynamicConcatenatingMediaSource.addMediaSource(mediaSource);
             player.prepare(dynamicConcatenatingMediaSource);
             player.setPlayWhenReady(true);
-
         }else{
             dynamicConcatenatingMediaSource.addMediaSource(mediaSource);
 

@@ -44,18 +44,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
     @Bind(R.id.player_view)SimpleExoPlayerView exoPlayerView;
 
     private Player player;
-    private Timeline.Window window;
-    private DataSource.Factory dataSourceFactory;
-    private ExtractorsFactory  extractorsFactory;
-    private MediaSource mediaSource;
-    private TrackSelection.Factory tractSelectionFactory;
-    private TrackSelector trackSelector;
-    private BandwidthMeter bandwidthMeter;
-    private RenderersFactory renderersFactory;
-    private Handler mainHandler;
-    private LoadControl loadControl;
     private String video;
-    private Uri uri;
     private static final String GALLERY_VIDEO ="gallery video";
 
 

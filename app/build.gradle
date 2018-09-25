@@ -84,6 +84,13 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     annotationProcessor 'org.parceler:parceler:1.1.6'
     testImplementation 'junit:junit:4.12'
+    implementation 'com.jakewharton:butterknife:7.0.1'
+    // Room components
+    implementation "android.arch.persistence.room:runtime:$rootProject.roomVersion"
+    annotationProcessor "android.arch.persistence.room:compiler:$rootProject.roomVersion"
+    // Lifecycle components
+    implementation "android.arch.lifecycle:extensions:$rootProject.archLifecycleVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$rootProject.archLifecycleVersion"
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
