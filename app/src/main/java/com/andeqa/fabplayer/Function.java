@@ -22,7 +22,8 @@ public class Function {
     static final String KEY_PATH = "path";
     static final String KEY_TIMESTAMP = "timestamp";
     static final String KEY_TIME = "date";
-    static final String KEY_COUNT = "date";
+    static final String KEY_COUNT = "count";
+    static final String KEY_DURATION = "duration";
 
 
     public static  boolean hasPermissions(Context context, String... permissions) {
@@ -37,7 +38,8 @@ public class Function {
     }
 
 
-    public static HashMap<String, String> mappingInbox(String album, String name, String path, String timestamp, String time, String count)
+    public static HashMap<String, String> mappingInbox(String album, String name, String path,
+                                                       String timestamp, String time, String count, String duration)
     {
         HashMap<String, String> map = new HashMap<String, String>();
         map.put(KEY_ALBUM, album);
@@ -46,6 +48,7 @@ public class Function {
         map.put(KEY_TIMESTAMP, timestamp);
         map.put(KEY_TIME, time);
         map.put(KEY_COUNT, count);
+        map.put(KEY_DURATION, duration);
         return map;
     }
 
@@ -53,17 +56,13 @@ public class Function {
 
     public static String getVideosCount(Context c, String album_name)
     {
-        Uri imagesExternalUri = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-        Uri imagesInternalUri = android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI;
         Uri videosInternalUri = android.provider.MediaStore.Video.Media.INTERNAL_CONTENT_URI;
         Uri videosExternalUri = android.provider.MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
 
 
         String[] projection = { MediaStore.MediaColumns.DATA,
-                MediaStore.Images.Media.BUCKET_DISPLAY_NAME, MediaStore.MediaColumns.DATE_MODIFIED };
+                MediaStore.Video.Media.BUCKET_DISPLAY_NAME, MediaStore.MediaColumns.DATE_MODIFIED };
 
-        Cursor imagesCursorExternal = c.getContentResolver().query(imagesExternalUri, projection,"bucket_display_name = \""+album_name+"\"", null, null);
-        Cursor imagesCursorInternal = c.getContentResolver().query(imagesInternalUri, projection, "bucket_display_name = \""+album_name+"\"", null, null);
         Cursor videosCursorExternal = c.getContentResolver().query(videosInternalUri, projection, "bucket_display_name = \""+album_name+"\"", null, null);
         Cursor videosCursorInternal = c.getContentResolver().query(videosExternalUri, projection, "bucket_display_name = \""+album_name+"\"", null, null);
 

@@ -4,7 +4,10 @@ import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
@@ -42,11 +45,13 @@ import butterknife.ButterKnife;
 public class VideoPlayerActivity extends AppCompatActivity {
 
     @Bind(R.id.player_view)SimpleExoPlayerView exoPlayerView;
+    @Bind(R.id.titleTextView)TextView titleTextView;
 
     private Player player;
     private String video;
+    private String name;
     private static final String GALLERY_VIDEO ="gallery video";
-
+    private static final String VIDEO_NAME = "name";
 
 
     @Override
@@ -57,15 +62,34 @@ public class VideoPlayerActivity extends AppCompatActivity {
 
         if (getIntent().getExtras() != null){
             video = getIntent().getStringExtra(GALLERY_VIDEO);
-            player = new Player(getApplicationContext(), exoPlayerView);
-            player.addMedia(video);
+            name = getIntent().getStringExtra(VIDEO_NAME);
+
+            titleTextView.setText(name);
+
+            if (exoPlayerView.getPlayer() != null){
+                exoPlayerView.setPlayer(null);
+                if (exoPlayerView.getPlayer() == null){
+                    player = new Player(getApplicationContext(), exoPlayerView);
+                    player.addMedia(video);
+                    exoPlayerView.setVisibility(View.VISIBLE);
+                }
+            }else {
+                player = new Player(getApplicationContext(), exoPlayerView);
+                player.addMedia(video);
+                exoPlayerView.setVisibility(View.VISIBLE);
+            }
         }
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        exoPlayerView.getPlayer().setPlayWhenReady(true);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                exoPlayerView.getPlayer().setPlayWhenReady(true);
+            }
+        },1000);
     }
 
     @Override
@@ -84,6 +108,17 @@ public class VideoPlayerActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        exoPlayerView.getPlayer().setPlayWhenReady(true);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                exoPlayerView.getPlayer().setPlayWhenReady(true);
+            }
+        },1000);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        exoPlayerView.getPlayer().release();
     }
 }

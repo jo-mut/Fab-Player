@@ -35,8 +35,6 @@ public class Player implements com.google.android.exoplayer2.Player.EventListene
     private DynamicConcatenatingMediaSource dynamicConcatenatingMediaSource;
     private SimpleExoPlayerView playerView;
     private SimpleExoPlayer player;
-    private RelativeLayout stateRelativeLayout;
-    private TextView stateTextView;
     private Timeline.Window window;
 
     public Player(Context context,SimpleExoPlayerView playerView){
@@ -47,8 +45,6 @@ public class Player implements com.google.android.exoplayer2.Player.EventListene
     }
 
     private void init_player() {
-        stateRelativeLayout = (RelativeLayout) playerView.findViewById(R.id.stateRelativeLayout);
-        stateTextView = (TextView) playerView.findViewById(R.id.stateTextView);
 
         window = new Timeline.Window();
         playerView.requestFocus();
@@ -74,7 +70,6 @@ public class Player implements com.google.android.exoplayer2.Player.EventListene
         if(dynamicConcatenatingMediaSource.getSize()==0){
             dynamicConcatenatingMediaSource.addMediaSource(mediaSource);
             player.prepare(dynamicConcatenatingMediaSource);
-            player.setPlayWhenReady(true);
         }else{
             dynamicConcatenatingMediaSource.addMediaSource(mediaSource);
 
@@ -82,22 +77,16 @@ public class Player implements com.google.android.exoplayer2.Player.EventListene
 
     }
 
-    private void showBuffering() {
-        stateRelativeLayout.setVisibility(View.VISIBLE);
-        stateTextView.setTextColor(Color.YELLOW);
-        stateTextView.setText("BUFFERING...");
+    public void releasePlayer(){
+        playerView.getPlayer().release();
     }
 
-    private void showError() {
-        stateRelativeLayout.setVisibility(View.VISIBLE);
-        stateTextView.setTextColor(Color.RED);
-        stateTextView.setText("CANNOT PLAY....");
-    }
+    public boolean player(){
+        if (playerView.getPlayer() != null){
 
-    private void showReady() {
-        stateRelativeLayout.setVisibility(View.GONE);
+        }
+        return true;
     }
-
 
     @Override
     public void onTimelineChanged(Timeline timeline, Object manifest) {
@@ -140,7 +129,7 @@ public class Player implements com.google.android.exoplayer2.Player.EventListene
 
     @Override
     public void onPlayerError(ExoPlaybackException error) {
-        showError();
+
     }
 
     @Override

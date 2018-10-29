@@ -6,8 +6,6 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     private RunTimePermissions runTimePermissions;
@@ -30,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        startActivity(new Intent(MainActivity.this, PLayListActivity.class));
+                        startActivity(new Intent(MainActivity.this, VideoListActivity.class));
                         finish();
                     }
                 },3000);
