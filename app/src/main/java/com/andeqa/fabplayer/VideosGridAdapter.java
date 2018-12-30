@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-public class VideosStaggeredAdapter extends RecyclerView.Adapter<VideoViewHolder> {
+public class VideosGridAdapter extends RecyclerView.Adapter<VideoViewHolder> {
     private Context mContext;
     List<HashMap<String, String>> videos = new ArrayList<HashMap<String, String>>();
     private Player player;
@@ -25,7 +25,7 @@ public class VideosStaggeredAdapter extends RecyclerView.Adapter<VideoViewHolder
 
 
 
-    public VideosStaggeredAdapter(Context mContext, List<HashMap<String, String>> videos ) {
+    public VideosGridAdapter(Context mContext, List<HashMap<String, String>> videos ) {
         this.mContext = mContext;
         this.videos = videos;
     }
@@ -77,8 +77,8 @@ public class VideosStaggeredAdapter extends RecyclerView.Adapter<VideoViewHolder
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, VideoPlayerActivity.class);
-                intent.putExtra(VideosStaggeredAdapter.GALLERY_VIDEO, videos.get(position).get(Function.KEY_PATH));
-                intent.putExtra(VideosStaggeredAdapter.VIDEO_NAME, videos.get(position).get(Function.KEY_NAME));
+                intent.putExtra(VideosGridAdapter.GALLERY_VIDEO, videos.get(position).get(Function.KEY_PATH));
+                intent.putExtra(VideosGridAdapter.VIDEO_NAME, videos.get(position).get(Function.KEY_NAME));
                 mContext.startActivity(intent);
             }
         });

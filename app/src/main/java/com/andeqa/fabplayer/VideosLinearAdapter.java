@@ -41,7 +41,7 @@ public class VideosLinearAdapter extends RecyclerView.Adapter<VideoViewHolder> {
     @Override
     public VideoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.layout_grid_layout, parent, false);
+                .inflate(R.layout.layout_linear_layout, parent, false);
         return new VideoViewHolder(view);
     }
 

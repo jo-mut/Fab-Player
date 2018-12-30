@@ -13,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -35,7 +36,8 @@ public class VideoListActivity extends AppCompatActivity {
 
     private static final String GALLERY_VIDEO ="gallery video";
 
-    private VideosRecyclerAdapter videosRecyclerAdapter;
+    private VideosLinearAdapter videosLinearAdapter;
+    private VideosGridAdapter videosGridAdapter;
     private ItemOffsetDecoration itemOffsetDecoration;
     private GridLayoutManager gridLayoutManager;
     private LinearLayoutManager linearLayoutManager;
@@ -54,10 +56,12 @@ public class VideoListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         setTitle("Fab player");
 
+        videosLinearAdapter = new VideosLinearAdapter(VideoListActivity.this, videos);
+        videosGridAdapter = new VideosGridAdapter(VideoListActivity.this, videos);
         itemOffsetDecoration = new ItemOffsetDecoration(this, R.dimen.item_off_set);
-        videosRecyclerAdapter = new VideosRecyclerAdapter(VideoListActivity.this, videos);
         loadAlbumTask = new LoadAlbumImages();
         loadAlbumTask.execute();
+
     }
 
 
@@ -122,7 +126,8 @@ public class VideoListActivity extends AppCompatActivity {
                 File file = new File(path);
                 name = file.getName();
                 videos.add(Function.mappingInbox(album, name, path, timestamp, Function.converToTime(timestamp), null, duration));
-                videosRecyclerAdapter.notifyItemInserted(videos.size() - 1);
+                videosLinearAdapter.notifyItemInserted(videos.size() - 1);
+                videosGridAdapter.notifyItemInserted(videos.size() - 1);
             }
             cursor.close();
             Collections.sort(videos, new MapComparator(Function.KEY_TIMESTAMP, "dsc")); // Arranging photo album by timestamp decending
@@ -133,17 +138,26 @@ public class VideoListActivity extends AppCompatActivity {
         protected void onPostExecute(String xml) {
             videosRecyclerView.setLayoutManager(setLayoutManager(gridLayoutManager, 0));
             videosRecyclerView.addItemDecoration(itemOffsetDecoration);
+            videosRecyclerView.setHasFixedSize(false);
+            videosRecyclerView.setItemAnimator(null);
+            videosRecyclerView.setAdapter(videosGridAdapter);
 
             mLayoutManagerImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (processManager){
+                    if (processManager) {
+                        videosLinearAdapter = new VideosLinearAdapter(VideoListActivity.this, videos);
                         videosRecyclerView.setLayoutManager(setLayoutManager(linearLayoutManager, 1));
                         mLayoutManagerImageView.setBackgroundResource(R.drawable.ic_grid_layout);
+                        videosRecyclerView.setAdapter(videosLinearAdapter);
+                        Log.d("linear adapter", "linear adapter");
                         processManager = false;
                     }else {
+                        videosGridAdapter = new VideosGridAdapter(VideoListActivity.this, videos);
                         videosRecyclerView.setLayoutManager(setLayoutManager(gridLayoutManager, 0));
                         mLayoutManagerImageView.setBackgroundResource(R.drawable.ic_linear_layout);
+                        videosRecyclerView.setAdapter(videosGridAdapter);
+                        Log.d("grid adapter", "grid adapter");
                         processManager = true;
                     }
                 }
@@ -152,28 +166,23 @@ public class VideoListActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
         videosRecyclerView.setAdapter(null);
     }
 
+
     public RecyclerView.LayoutManager setLayoutManager(RecyclerView.LayoutManager layoutManager, int position) {
         switch (position){
             case 0:
                 layoutManager = new GridLayoutManager(this, 2);
-                videosRecyclerAdapter.getPosition(0);
                 break;
             case 1:
-                videosRecyclerAdapter.getPosition(1);
                 layoutManager = new LinearLayoutManager(this);
+                break;
 
         }
-
-        videosRecyclerView.setHasFixedSize(false);
-        videosRecyclerView.setAdapter(videosRecyclerAdapter);
-        videosRecyclerView.setItemAnimator(null);
 
         return layoutManager;
     }
